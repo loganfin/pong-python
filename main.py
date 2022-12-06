@@ -1,4 +1,4 @@
-from game_window import GameWindow
+from gameWindow import GameWindow
 from square import Square
 from paddle import Paddle
 

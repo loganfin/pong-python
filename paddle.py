@@ -25,8 +25,8 @@ class Paddle:
 
         self.__distance = 20
 
-    def forward(self):
+    def moveUp(self):
         self.__paddle.forward(self.__distance)
 
-    def backward(self):
+    def moveDown(self):
         self.__paddle.backward(self.__distance)

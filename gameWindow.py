@@ -12,22 +12,22 @@ class GameWindow:
 
         self.__player1 = Paddle(1)
 
-        self.__window.onkey(self.forward, "Up")
-        self.__window.onkey(self.backward, "Down")
+        self.__window.onkey(self.p1Up, "Up")
+        self.__window.onkey(self.p1Down, "Down")
 
         self.__window.listen()
 
-    def get_width():
+    def getWidth():
         return self.__width
 
-    def get_height():
+    def getHeight():
         return self.__height
 
-    def forward(self):
-        self.__player1.forward()
+    def p1Up(self):
+        self.__player1.moveUp()
 
-    def backward(self):
-        self.__player1.backward()
+    def p1Down(self):
+        self.__player1.moveDown()
 
     def mainloop(self):
         self.__window.mainloop()

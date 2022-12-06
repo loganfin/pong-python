@@ -1,6 +1,6 @@
 import turtle
 
-from game_window import GameWindow
+from gameWindow import GameWindow
 
 class Square:
     def __init__(self):
@@ -21,6 +21,6 @@ class Square:
     def move(self):
         #while self.__square.xcor() < self.__screenXBound and self.__square.ycor() < self.__screenYBound:
         for i in range(10):
-            self.__square.forward(self.__distance)
+            self.__square.up(self.__distance)
 
         self.__window.mainloop()
