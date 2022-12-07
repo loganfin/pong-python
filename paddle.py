@@ -19,7 +19,7 @@ class Paddle:
         self.__paddle.setheading(90)
         self.__paddle.shapesize(1, 6)
         self.__paddle.color("grey")
-        self.__paddle.speed("slowest")
+        self.__paddle.speed(0)
         self.__paddle.penup()
         self.__paddle.showturtle()
 

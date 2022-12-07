@@ -11,9 +11,12 @@ class GameWindow:
         self.__window.setup(self.__width, self.__height)
 
         self.__player1 = Paddle(1)
+        self.__player2 = Paddle(2)
 
-        self.__window.onkey(self.p1Up, "Up")
-        self.__window.onkey(self.p1Down, "Down")
+        self.__window.onkey(self.p1Up, 'w')
+        self.__window.onkey(self.p1Down, 's')
+        self.__window.onkey(self.p2Up, "Up")
+        self.__window.onkey(self.p2Down, "Down")
 
         self.__window.listen()
 
@@ -28,6 +31,12 @@ class GameWindow:
 
     def p1Down(self):
         self.__player1.moveDown()
+
+    def p2Up(self):
+        self.__player2.moveUp()
+
+    def p2Down(self):
+        self.__player2.moveDown()
 
     def mainloop(self):
         self.__window.mainloop()
