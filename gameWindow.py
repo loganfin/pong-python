@@ -1,6 +1,7 @@
 import turtle
 
 from paddle import Paddle
+from square import Square
 
 class WatchedKey:
     def __init__(self, key):
@@ -25,6 +26,7 @@ class GameWindow:
 
         self.__player1 = Paddle(-self.__width/3)
         self.__player2 = Paddle(self.__width/3)
+        self.__square = Square()
         #self.drawCourt()
         self.__player1.show()
         self.__player2.show()

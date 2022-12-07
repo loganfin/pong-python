@@ -4,7 +4,6 @@ from gameWindow import GameWindow
 
 class Square:
     def __init__(self):
-        self.__window = GameWindow()
         self.__square = turtle.Turtle()
 
         self.__square.hideturtle()
@@ -22,5 +21,3 @@ class Square:
         #while self.__square.xcor() < self.__screenXBound and self.__square.ycor() < self.__screenYBound:
         for i in range(10):
             self.__square.up(self.__distance)
-
-        self.__window.mainloop()
