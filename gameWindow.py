@@ -10,13 +10,14 @@ class GameWindow:
         self.__window = turtle.Screen()
         self.__window.setup(self.__width, self.__height)
 
-        self.__player1 = Paddle(1)
-        self.__player2 = Paddle(2)
+        self.__player1 = Paddle(1, -self.__width/2)
+        self.__player2 = Paddle(2, self.__width/2)
+        #self.__player2.setX(self.__width - self.__width/100)
 
-        self.__window.onkey(self.p1Up, 'w')
-        self.__window.onkey(self.p1Down, 's')
-        self.__window.onkey(self.p2Up, "Up")
-        self.__window.onkey(self.p2Down, "Down")
+        self.__window.onkey(self.__player1.moveUp, 'w')
+        self.__window.onkey(self.__player1.moveDown, 's')
+        self.__window.onkey(self.__player2.moveUp, "Up")
+        self.__window.onkey(self.__player2.moveDown, "Down")
 
         self.__window.listen()
 

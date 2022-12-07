@@ -4,7 +4,7 @@ class Paddle:
     #self.__player1Pos = (-10, 0)
     #self.__player2Pos = (10, 0)
 
-    def __init__(self, player):
+    def __init__(self, player, xPos):
         '''
         if player == 1:
             self.__xPos, self.__yPos = self.__player1Pos
@@ -15,6 +15,9 @@ class Paddle:
         self.__paddle = turtle.Turtle()
 
         self.__paddle.hideturtle()
+        self.__paddle.penup()
+        self.__paddle.setx(xPos)
+        self.__paddle.pendown()
         self.__paddle.shape("square")
         self.__paddle.setheading(90)
         self.__paddle.shapesize(1, 6)
@@ -30,3 +33,7 @@ class Paddle:
 
     def moveDown(self):
         self.__paddle.backward(self.__distance)
+
+    def setX(self, xPos):
+        self.__paddle.hideturtle()
+        #self.__paddle.setx(xPos)
