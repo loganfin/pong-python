@@ -45,19 +45,25 @@ class GameWindow:
         self.__court.goto(self.__leftBorder, self.__topBorder)
 
     def move(self):
+        ms = 10
         if self.__wKey.down and not self.__sKey.down:
             self.__player1.moveUp(self.__topBorder)
+            ms -= 5
 
         if self.__sKey.down and not self.__wKey.down:
             self.__player1.moveDown(self.__bottomBorder)
+            ms -= 5
 
         if self.__upKey.down and not self.__downKey.down:
             self.__player2.moveUp(self.__topBorder)
+            ms -= 5
 
         if self.__downKey.down and not self.__upKey.down:
             self.__player2.moveDown(self.__bottomBorder)
+            ms -= 5
 
-        self.__window.ontimer(self.move, 10)
+        print(ms)
+        self.__window.ontimer(self.move, ms)
 
     def getWidth(self):
         return self.__width
