@@ -1,15 +1,15 @@
 import turtle
 
-class KeyEvent:
+class KeyEvent: #[Logan]
     def __init__(self, key):
-        self.key = key
-        self.down = False
-        turtle.onkeypress(self.press, key)
-        turtle.onkeyrelease(self.release, key)
+        self.__key = key
+        self.pressed = False
+
+        turtle.onkeypress(self.press, self.__key)
+        turtle.onkeyrelease(self.release, self.__key)
 
     def press(self):
-        self.down = True
+        self.pressed = True
 
     def release(self):
-        self.down = False
-
+        self.pressed = False
