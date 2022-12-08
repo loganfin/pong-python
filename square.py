@@ -1,15 +1,13 @@
 import turtle
 
-from gameWindow import GameWindow
-
 class Square:
     def __init__(self):
         self.__square = turtle.Turtle()
 
         self.__square.hideturtle()
         self.__square.shape("square")
-        self.__square.setheading(90)
-        self.__square.shapesize(1, 6)
+        #self.__square.setheading(90)
+        #self.__square.shapesize(1, 6)
         self.__square.color("grey")
         self.__square.speed("slowest")
         self.__square.penup()

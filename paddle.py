@@ -2,7 +2,7 @@ import turtle
 
 class Paddle:
     def __init__(self, xPos):
-        self.__distance = 5
+        self.__distance = 20
         self.__paddle = turtle.Turtle(visible = False)
 
         self.__paddle.speed(0)
