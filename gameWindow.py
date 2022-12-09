@@ -56,11 +56,6 @@ class GameWindow:   #[Logan] & [Jenna]
         self.__court.goto(self.__rightBorder, self.__topBorder)
         self.__court.goto(self.__leftBorder, self.__topBorder)
 
-<<<<<<< HEAD
-    def move(self):
-        ms = 10
-        if self.__wKey.down and not self.__sKey.down:
-=======
         self.__court.penup()
         self.__court.goto(((self.__rightBorder - self.__leftBorder) / 2) + self.__leftBorder, self.__topBorder)
         self.__court.setheading(270)
@@ -71,24 +66,18 @@ class GameWindow:   #[Logan] & [Jenna]
 
     def move(self): #[Logan]
         if self.__wKey.pressed and not self.__sKey.pressed:
->>>>>>> b446ee3 (drawCourt() change.)
             self.__player1.moveUp(self.__topBorder)
-            ms -= 5
 
         if self.__sKey.pressed and not self.__wKey.pressed:
             self.__player1.moveDown(self.__bottomBorder)
-            ms -= 5
 
         if self.__upKey.pressed and not self.__downKey.pressed:
             self.__player2.moveUp(self.__topBorder)
-            ms -= 5
 
         if self.__downKey.pressed and not self.__upKey.pressed:
             self.__player2.moveDown(self.__bottomBorder)
-            ms -= 5
 
-        print(ms)
-        self.__window.ontimer(self.move, ms)
+        self.__window.ontimer(self.move, 10)
 
     def mainloop(self): #[Logan] & [Jenna]
         self.move()
