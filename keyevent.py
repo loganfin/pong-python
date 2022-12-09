@@ -7,7 +7,6 @@ class KeyEvent: #[Logan]
 
         turtle.onkeypress(self.press, self.__key)
         turtle.onkeyrelease(self.release, self.__key)
-
     def press(self):
         self.pressed = True
 
