@@ -1,8 +1,9 @@
 import turtle
 
 class Square(turtle.Turtle):   #[Jenna]
-    def __init__(self, visible = False):
-        super().__init__()
+    def __init__(self):
+        super().__init__(visible = False)
+        self.speed(0)
         self.shape("square")
         self.color("grey")
         self.speed("slowest")
