@@ -20,17 +20,21 @@ class Paddle:
 
     def moveUp(self, topBorder):
         if self.__paddle.ycor() + self.__top == topBorder:
-            pass
+            return False
         elif self.__paddle.ycor() + self.__top + self.__distance >= topBorder:
             self.__paddle.forward(topBorder - self.__paddle.ycor() - self.__top)
+            return True
         elif self.__paddle.ycor() + self.__top <= topBorder:
             self.__paddle.forward(self.__distance)
+            return True
 
 
     def moveDown(self, bottomBorder):
         if self.__paddle.ycor() - self.__bottom == bottomBorder:
-            pass
+            return False
         elif self.__paddle.ycor() - self.__bottom - self.__distance <= bottomBorder:
             self.__paddle.backward(self.__paddle.ycor() - self.__bottom - bottomBorder)
+            return True
         elif self.__paddle.ycor() - self.__bottom  >= bottomBorder:
             self.__paddle.backward(self.__distance)
+            return True
