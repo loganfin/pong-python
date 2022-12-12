@@ -7,7 +7,7 @@ from turtle import Screen
 
 from paddle import Paddle
 from square import Square
-from keyEvent import KeyEvent
+from keyevent import KeyEvent
 
 class GameWindow:   #[Logan] & [Jenna]
     def __init__(self): #[Logan] & [Jenna]
@@ -56,31 +56,6 @@ class GameWindow:   #[Logan] & [Jenna]
         self.__court.goto(self.__rightBorder, self.__topBorder)
         self.__court.goto(self.__leftBorder, self.__topBorder)
 
-<<<<<<< HEAD
-    def move(self):
-        ms = 40
-        if self.__wKey.down and not self.__sKey.down:
-            moved = self.__player1.moveUp(self.__topBorder)
-            if moved:
-                ms -= 20
-
-        if self.__sKey.down and not self.__wKey.down:
-            moved = self.__player1.moveDown(self.__bottomBorder)
-            if moved:
-                ms -= 20
-
-        if self.__upKey.down and not self.__downKey.down:
-            moved = self.__player2.moveUp(self.__topBorder)
-            if moved:
-                ms -= 20
-
-        if self.__downKey.down and not self.__upKey.down:
-            moved = self.__player2.moveDown(self.__bottomBorder)
-            if moved:
-                ms -= 20
-
-        self.__window.ontimer(self.move, ms)
-=======
         self.__court.penup()
         self.__court.goto(((self.__rightBorder - self.__leftBorder) / 2) + self.__leftBorder, self.__topBorder)
         self.__court.setheading(270)
@@ -90,20 +65,27 @@ class GameWindow:   #[Logan] & [Jenna]
         self.__court.goto(((self.__rightBorder - self.__leftBorder) / 2) + self.__leftBorder, self.__bottomBorder)
 
     def move(self): #[Logan]
+        ms = 40
         if self.__wKey.pressed and not self.__sKey.pressed:
-            self.__player1.moveUp(self.__topBorder)
+            moved = self.__player1.moveUp(self.__topBorder)
+            if moved:
+                ms -= 20
 
         if self.__sKey.pressed and not self.__wKey.pressed:
-            self.__player1.moveDown(self.__bottomBorder)
+            moved = self.__player1.moveDown(self.__bottomBorder)
+            if moved:
+                ms -= 20
 
         if self.__upKey.pressed and not self.__downKey.pressed:
-            self.__player2.moveUp(self.__topBorder)
+            moved = self.__player2.moveUp(self.__topBorder)
+            if moved:
+                ms -= 20
 
         if self.__downKey.pressed and not self.__upKey.pressed:
-            self.__player2.moveDown(self.__bottomBorder)
-
-        self.__window.ontimer(self.move, 10)
->>>>>>> 8400bcb0d4691eeb814181fdbbe95e24f187fe3d
+            moved = self.__player2.moveDown(self.__bottomBorder)
+            if moved:
+                ms -= 20
+        self.__window.ontimer(self.move, ms)
 
     def mainloop(self): #[Logan] & [Jenna]
         self.move()

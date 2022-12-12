@@ -23,10 +23,11 @@ class Paddle:   #[Logan] & [Jenna]
 
     def moveUp(self, topBorder):    #[Logan]
         if self.__paddle.ycor() + self.__halfHeight == topBorder:
-            pass
+            return False
 
         elif self.__paddle.ycor() + self.__halfHeight + self.__distance >= topBorder:
             self.__paddle.forward(topBorder - self.__paddle.ycor() - self.__halfHeight)
+            return True
 
         elif self.__paddle.ycor() + self.__halfHeight <= topBorder:
             self.__paddle.forward(self.__distance)
@@ -34,9 +35,12 @@ class Paddle:   #[Logan] & [Jenna]
 
     def moveDown(self, bottomBorder):   #[Logan]
         if self.__paddle.ycor() - self.__halfHeight == bottomBorder:
-            pass
+            return False
+
         elif self.__paddle.ycor() - self.__halfHeight - self.__distance <= bottomBorder:
             self.__paddle.backward(self.__paddle.ycor() - self.__halfHeight - bottomBorder)
+            return True
+
         elif self.__paddle.ycor() - self.__halfHeight >= bottomBorder:
             self.__paddle.backward(self.__distance)
             return True
