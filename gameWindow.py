@@ -66,6 +66,10 @@ class GameWindow:   #[Logan] & [Jenna]
 
     def move(self): #[Logan]
         ms = 40
+
+        self.__square.move(self.__topBorder, self.__bottomBorder,
+                           self.__leftBorder, self.__rightBorder)
+
         if self.__wKey.pressed and not self.__sKey.pressed:
             moved = self.__player1.moveUp(self.__topBorder)
             if moved:
