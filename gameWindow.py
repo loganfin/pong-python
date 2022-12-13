@@ -2,8 +2,7 @@
 Logan created KeyEvent class.
 '''
 
-from turtle import Turtle
-from turtle import Screen
+import turtle
 
 from paddle import Paddle
 from square import Square
@@ -15,15 +14,9 @@ class GameWindow:   #[Logan] & [Jenna]
         self.__height = 550
         self.__margin = 25
 
-        self.__window = Screen()
+        self.__window = turtle.Screen()
         self.__window.setup(self.__width, self.__height)
 
-        '''
-        self.__leftBorder = (-self.__width / 2) + 10
-        self.__rightBorder = (self.__width / 2) - 20
-        self.__topBorder = (self.__height / 2) - 10
-        self.__bottomBorder = (-self.__height / 2) + 20
-        '''
         self.__leftBorder = (-self.__width / 2) + self.__margin
         self.__rightBorder = (self.__width / 2) - self.__margin
         self.__topBorder = (self.__height / 2) - self.__margin
@@ -34,6 +27,7 @@ class GameWindow:   #[Logan] & [Jenna]
         self.__sKey = KeyEvent('s')
         self.__upKey = KeyEvent('Up')
         self.__downKey = KeyEvent('Down')
+        self.__escKey = KeyEvent('Escape')
 
         self.__player1 = Paddle(-self.__width / 2.5, self.__height)
         self.__player2 = Paddle(self.__width / 2.5, self.__height)
@@ -41,12 +35,14 @@ class GameWindow:   #[Logan] & [Jenna]
         self.__player2.show()
 
         self.__square = Square()
+        self.__square.show()
 
-    def drawCourt(self):    #[Logan]
-        self.__court = Turtle(visible=False)
+    def drawCourt(self):    #[Logan] & [Jenna]
+        self.__court = turtle.Turtle(visible=False)
         self.__court.speed(0)
         self.__court.pensize(3)
 
+            #draw outer border
         self.__court.penup()
         self.__court.goto(self.__leftBorder, self.__topBorder)
         self.__court.pendown()
@@ -56,6 +52,7 @@ class GameWindow:   #[Logan] & [Jenna]
         self.__court.goto(self.__rightBorder, self.__topBorder)
         self.__court.goto(self.__leftBorder, self.__topBorder)
 
+            #draw middle line
         self.__court.penup()
         self.__court.goto(((self.__rightBorder - self.__leftBorder) / 2) + self.__leftBorder, self.__topBorder)
         self.__court.setheading(270)
@@ -64,7 +61,12 @@ class GameWindow:   #[Logan] & [Jenna]
         self.__court.pendown()
         self.__court.goto(((self.__rightBorder - self.__leftBorder) / 2) + self.__leftBorder, self.__bottomBorder)
 
-    def move(self): #[Logan]
+    def move(self): #[Logan] & [Jenna]
+        self.__square.move()
+
+        if self.__escKey.pressed:
+            turtle.bye()
+
         if self.__wKey.pressed and not self.__sKey.pressed:
             self.__player1.moveUp(self.__topBorder)
 

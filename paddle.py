@@ -2,7 +2,6 @@ from turtle import Turtle
 
 class Paddle:   #[Logan] & [Jenna]
     def __init__(self, xPos, windowHeight):   #[Logan] & [Jenna]
-        self.__distance = 15
         self.__paddle = Turtle(visible = False)
 
         self.__paddle.speed(0)
@@ -13,6 +12,7 @@ class Paddle:   #[Logan] & [Jenna]
         self.__paddle.shapesize(1, 6)
         self.__paddle.color("grey")
 
+        self.__distance = 25
         self.__halfHeight = abs(self.__paddle.get_shapepoly()[0][1]) + 2
 
         #self.__top = 62
