@@ -61,25 +61,39 @@ class GameWindow:   #[Logan] & [Jenna]
         self.__court.pendown()
         self.__court.goto(((self.__rightBorder - self.__leftBorder) / 2) + self.__leftBorder, self.__bottomBorder)
 
-    def move(self): #[Logan] & [Jenna]
-        self.__square.move()
+    def move(self): #[Logan]
+        ms = 40
+
+        self.__square.move(self.__topBorder, self.__bottomBorder,
+                           self.__leftBorder, self.__rightBorder)
 
         if self.__escKey.pressed:
-            turtle.bye()
+            self.quit()
 
         if self.__wKey.pressed and not self.__sKey.pressed:
-            self.__player1.moveUp(self.__topBorder)
+            moved = self.__player1.moveUp(self.__topBorder)
+            if moved:
+                ms -= 20
 
         if self.__sKey.pressed and not self.__wKey.pressed:
-            self.__player1.moveDown(self.__bottomBorder)
+            moved = self.__player1.moveDown(self.__bottomBorder)
+            if moved:
+                ms -= 20
 
         if self.__upKey.pressed and not self.__downKey.pressed:
-            self.__player2.moveUp(self.__topBorder)
+            moved = self.__player2.moveUp(self.__topBorder)
+            if moved:
+                ms -= 20
 
         if self.__downKey.pressed and not self.__upKey.pressed:
-            self.__player2.moveDown(self.__bottomBorder)
+            moved = self.__player2.moveDown(self.__bottomBorder)
+            if moved:
+                ms -= 20
 
-        self.__window.ontimer(self.move, 10)
+        self.__window.ontimer(self.move, ms)
+
+    def quit(self):
+        turtle.bye()
 
     def mainloop(self): #[Logan] & [Jenna]
         self.move()
