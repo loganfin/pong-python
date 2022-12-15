@@ -54,18 +54,26 @@ class GameWindow:   #[Logan] & [Jenna]
 
             #draw middle line
         self.__court.penup()
-        self.__court.goto(((self.__rightBorder - self.__leftBorder) / 2) + self.__leftBorder, self.__topBorder)
+        self.__court.goto(((self.__rightBorder - self.__leftBorder) / 2) + self.__leftBorder,
+                            self.__topBorder)
         self.__court.setheading(270)
         self.__court.pensize(1)
 
         self.__court.pendown()
-        self.__court.goto(((self.__rightBorder - self.__leftBorder) / 2) + self.__leftBorder, self.__bottomBorder)
+        self.__court.goto(((self.__rightBorder - self.__leftBorder) / 2) + self.__leftBorder,
+                            self.__bottomBorder)
 
     def move(self): #[Logan]
-        ms = 40
+        gameover = False
+        time = 40   #in milliseconds
 
-        self.__square.move(self.__topBorder, self.__bottomBorder,
-                           self.__leftBorder, self.__rightBorder)
+        gameover = self.__square.move(self.__topBorder, self.__bottomBorder,
+                                        self.__leftBorder, self.__rightBorder,
+                                        self.__player1, self.__player2)
+
+        if gameover:
+            self.__player1.reset()
+            self.__player2.reset()
 
         if self.__escKey.pressed:
             self.quit()
@@ -73,24 +81,24 @@ class GameWindow:   #[Logan] & [Jenna]
         if self.__wKey.pressed and not self.__sKey.pressed:
             moved = self.__player1.moveUp(self.__topBorder)
             if moved:
-                ms -= 20
+                time -= 20
 
         if self.__sKey.pressed and not self.__wKey.pressed:
             moved = self.__player1.moveDown(self.__bottomBorder)
             if moved:
-                ms -= 20
+                time -= 20
 
         if self.__upKey.pressed and not self.__downKey.pressed:
             moved = self.__player2.moveUp(self.__topBorder)
             if moved:
-                ms -= 20
+                time -= 20
 
         if self.__downKey.pressed and not self.__upKey.pressed:
             moved = self.__player2.moveDown(self.__bottomBorder)
             if moved:
-                ms -= 20
+                time -= 20
 
-        self.__window.ontimer(self.move, ms)
+        self.__window.ontimer(self.move, time)
 
     def quit(self):
         turtle.bye()

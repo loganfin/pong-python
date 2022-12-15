@@ -2,46 +2,53 @@ from turtle import Turtle
 
 class Paddle(Turtle):   #[Logan] & [Jenna]
     def __init__(self, xPos, windowHeight):   #[Logan] & [Jenna]
-        self.__distance = 15
         super().__init__(visible = False)
-        #self.__paddle = Turtle(visible = False)
+
+        self.__distance = 25
+        self.__xPosition = xPos
+
+        self.topCollision = self.ycor() + abs(self.get_shapepoly()[0][1])
+        self.bottomCollision = self.ycor() - abs(self.get_shapepoly()[0][1])
+
+        if self.xcor() < 0:
+            self.sideCollision = self.xcor() + 10
+        else:
+            self.sideCollision = self.xcor() - 10
 
         self.speed(0)
         self.penup()
-        self.setx(xPos)
+        self.setx(self.__xPosition)
         self.shape("square")
         self.setheading(90)
         self.shapesize(1, 6)
         self.color("grey")
 
-        self.__halfHeight = abs(self.get_shapepoly()[0][1]) + 2
-
-        #self.__top = 62
-        #self.__bottom = 62 # need to find a generic way to determine these values
+        self.halfHeight = abs(self.get_shapepoly()[0][1]) + 2
 
     def show(self): #[Logan]
         self.showturtle()
 
     def moveUp(self, topBorder):    #[Logan]
-        if self.ycor() + self.__halfHeight == topBorder:
+        if self.ycor() + self.halfHeight == topBorder:
             return False
 
-        elif self.ycor() + self.__halfHeight + self.__distance >= topBorder:
-            self.forward(topBorder - self.ycor() - self.__halfHeight)
+        if self.ycor() + self.halfHeight + self.__distance >= topBorder:
+            self.forward(topBorder - self.ycor() - self.halfHeight)
             return True
 
-        elif self.ycor() + self.__halfHeight <= topBorder:
-            self.forward(self.__distance)
-            return True
+        self.forward(self.__distance)
+        return True
 
     def moveDown(self, bottomBorder):   #[Logan]
-        if self.ycor() - self.__halfHeight == bottomBorder:
+        if self.ycor() - self.halfHeight == bottomBorder:
             return False
 
-        elif self.ycor() - self.__halfHeight - self.__distance <= bottomBorder:
-            self.backward(self.ycor() - self.__halfHeight - bottomBorder)
+        if self.ycor() - self.halfHeight - self.__distance <= bottomBorder:
+            self.backward(self.ycor() - self.halfHeight - bottomBorder)
             return True
 
-        elif self.ycor() - self.__halfHeight >= bottomBorder:
-            self.backward(self.__distance)
-            return True
+        self.backward(self.__distance)
+        return True
+
+    def reset(self):
+        self.goto(self.__xPosition, 0)
