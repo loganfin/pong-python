@@ -1,7 +1,7 @@
 from turtle import Turtle
 
 class Paddle(Turtle):   #[Logan] & [Jenna]
-    def __init__(self, xPos, windowHeight):   #[Logan] & [Jenna]
+    def __init__(self, xPos, windowHeight, color):   #[Logan] & [Jenna]
         super().__init__(visible = False)
 
         self.__distance = 25
@@ -21,7 +21,7 @@ class Paddle(Turtle):   #[Logan] & [Jenna]
         self.shape("square")
         self.setheading(90)
         self.shapesize(1, 6)
-        self.color("grey")
+        self.color(color)
 
         self.halfHeight = abs(self.get_shapepoly()[0][1]) + 2
 
@@ -49,6 +49,9 @@ class Paddle(Turtle):   #[Logan] & [Jenna]
 
         self.backward(self.__distance)
         return True
+
+    def getColor(self):
+        return self.color()
 
     def reset(self):
         self.goto(self.__xPosition, 0)

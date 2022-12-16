@@ -33,6 +33,8 @@ class Square(Turtle):   #[Jenna]
 
             #collision with side of right paddle
         if self.xcor() + self.__halfHeight > rightPaddle.xcor() - 10:
+            #print(rightPaddle.color()[0])
+            self.color(rightPaddle.color()[0])
             if self.ycor() < rightPaddle.ycor() + rightPaddle.halfHeight and\
                     self.ycor() > rightPaddle.ycor() - rightPaddle.halfHeight and\
                     self.xcor() < rightPaddle.xcor() - 10:
@@ -48,6 +50,7 @@ class Square(Turtle):   #[Jenna]
 
             #collision with side of left paddle
         if self.xcor() - self.__halfHeight < leftPaddle.xcor() + 10:
+            self.color(leftPaddle.color()[0])
             if self.ycor() < leftPaddle.ycor() + leftPaddle.halfHeight and\
                     self.ycor() > leftPaddle.ycor() - leftPaddle.halfHeight and\
                     self.xcor() > leftPaddle.xcor() + 10:
@@ -66,6 +69,7 @@ class Square(Turtle):   #[Jenna]
                 self.ycor() - self.__halfHeight <  rightPaddle.ycor() + rightPaddle.halfHeight and\
                 (self.xcor() + self.__halfHeight > rightPaddle.xcor() - 10 and\
                 self.xcor() - self.__halfHeight < rightPaddle.xcor() + 10):
+            self.color(rightPaddle.color()[0])
 
             self.sety(rightPaddle.ycor() + rightPaddle.halfHeight)
             self.dy *= -1
@@ -82,6 +86,7 @@ class Square(Turtle):   #[Jenna]
                 self.ycor() + self.__halfHeight >  rightPaddle.ycor() - rightPaddle.halfHeight and\
                 (self.xcor() + self.__halfHeight > rightPaddle.xcor() - 10 and\
                 self.xcor() - self.__halfHeight < rightPaddle.xcor() + 10):
+            self.color(rightPaddle.color()[0])
 
             self.sety(rightPaddle.ycor() - rightPaddle.halfHeight)
             self.dy *= -1
@@ -99,6 +104,7 @@ class Square(Turtle):   #[Jenna]
                 (self.xcor() + self.__halfHeight > leftPaddle.xcor() - 10 and\
                 self.xcor() - self.__halfHeight < leftPaddle.xcor() + 10):
 
+            self.color(leftPaddle.color()[0])
             self.sety(leftPaddle.ycor() + leftPaddle.halfHeight)
             self.dy *= -1
             gameover = True
@@ -114,6 +120,8 @@ class Square(Turtle):   #[Jenna]
                 self.ycor() + self.__halfHeight > leftPaddle.ycor() - leftPaddle.halfHeight and\
                 (self.xcor() + self.__halfHeight > leftPaddle.xcor() - 10 and\
                 self.xcor() - self.__halfHeight < leftPaddle.xcor() + 10):
+
+            self.color(leftPaddle.color()[0])
 
             self.sety(leftPaddle.ycor() - leftPaddle.halfHeight)
             self.dy *= -1
