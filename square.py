@@ -23,14 +23,16 @@ class Square(Turtle):   #[Jenna]
         if self.ycor() + self.__halfHeight > top:
             self.sety(top - self.__halfHeight)
             self.dy *= -1
+            return gameover, 0
 
             #collision with bottom boundary
-        elif self.ycor() - self.__halfHeight < bottom:
+        if self.ycor() - self.__halfHeight < bottom:
             self.sety(bottom + self.__halfHeight)
             self.dy *= -1
+            return gameover, 0
 
             #collision with side of right paddle
-        elif self.xcor() + self.__halfHeight > rightPaddle.xcor() - 10:
+        if self.xcor() + self.__halfHeight > rightPaddle.xcor() - 10:
             if self.ycor() < rightPaddle.ycor() + rightPaddle.halfHeight and\
                     self.ycor() > rightPaddle.ycor() - rightPaddle.halfHeight and\
                     self.xcor() < rightPaddle.xcor() - 10:
@@ -42,9 +44,10 @@ class Square(Turtle):   #[Jenna]
                     self.dy = 10
                 else:
                     self.dy = -10
+                return gameover, 0
 
             #collision with side of left paddle
-        elif self.xcor() - self.__halfHeight < leftPaddle.xcor() + 10:
+        if self.xcor() - self.__halfHeight < leftPaddle.xcor() + 10:
             if self.ycor() < leftPaddle.ycor() + leftPaddle.halfHeight and\
                     self.ycor() > leftPaddle.ycor() - leftPaddle.halfHeight and\
                     self.xcor() > leftPaddle.xcor() + 10:
@@ -56,9 +59,10 @@ class Square(Turtle):   #[Jenna]
                     self.dy = 10
                 else:
                     self.dy = -10
+                return gameover, 0
 
             #collision with top of right paddle
-        elif self.ycor() > rightPaddle.ycor() and\
+        if self.ycor() > rightPaddle.ycor() and\
                 self.ycor() - self.__halfHeight <  rightPaddle.ycor() + rightPaddle.halfHeight and\
                 (self.xcor() + self.__halfHeight > rightPaddle.xcor() - 10 and\
                 self.xcor() - self.__halfHeight < rightPaddle.xcor() + 10):
@@ -71,8 +75,10 @@ class Square(Turtle):   #[Jenna]
                 self.dx *= -1
                 gameover = False
 
+            return gameover, 0
+
             #collision with bottom of right paddle
-        elif self.ycor() < rightPaddle.ycor() and\
+        if self.ycor() < rightPaddle.ycor() and\
                 self.ycor() + self.__halfHeight >  rightPaddle.ycor() - rightPaddle.halfHeight and\
                 (self.xcor() + self.__halfHeight > rightPaddle.xcor() - 10 and\
                 self.xcor() - self.__halfHeight < rightPaddle.xcor() + 10):
@@ -85,8 +91,10 @@ class Square(Turtle):   #[Jenna]
                 self.dx *= -1
                 gameover = False
 
+            return gameover, 0
+
             #collision with top of left paddle
-        elif self.ycor() - self.__halfHeight > leftPaddle.ycor() + leftPaddle.halfHeight and\
+        if self.ycor() - self.__halfHeight > leftPaddle.ycor() + leftPaddle.halfHeight and\
                 self.ycor() - self.__halfHeight < leftPaddle.ycor() + leftPaddle.halfHeight and\
                 (self.xcor() + self.__halfHeight > leftPaddle.xcor() - 10 and\
                 self.xcor() - self.__halfHeight < leftPaddle.xcor() + 10):
@@ -99,8 +107,10 @@ class Square(Turtle):   #[Jenna]
                 self.dx *= -1
                 gameover = False
 
+            return gameover, 0
+
             #collision with bottom of left paddle
-        elif self.ycor() < leftPaddle.ycor() and\
+        if self.ycor() < leftPaddle.ycor() and\
                 self.ycor() + self.__halfHeight > leftPaddle.ycor() - leftPaddle.halfHeight and\
                 (self.xcor() + self.__halfHeight > leftPaddle.xcor() - 10 and\
                 self.xcor() - self.__halfHeight < leftPaddle.xcor() + 10):
@@ -113,22 +123,26 @@ class Square(Turtle):   #[Jenna]
                 self.dx *= -1
                 gameover = False
 
+            return gameover, 0
+
             #collision with right boundary
-        elif self.xcor() + self.__halfHeight > right:
+        if self.xcor() + self.__halfHeight > right:
             self.setx(right - self.__halfHeight)
             self.reset()
             self.dx *= -1
             gameover = True
+            return gameover, 1
 
             #collision with left boundary
-        elif self.xcor() - self.__halfHeight < left:
+        if self.xcor() - self.__halfHeight < left:
             self.setx(left + self.__halfHeight)
             self.reset()
             self.dx *= -1
             gameover = True
+            return gameover, 2
 
         self.goto(self.xcor() + self.dx, self.ycor() + self.dy)
-        return gameover
+        return gameover, 0
 
     def show(self):
         self.showturtle()

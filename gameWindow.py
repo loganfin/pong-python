@@ -7,6 +7,7 @@ import turtle
 from paddle import Paddle
 from square import Square
 from keyEvent import KeyEvent
+from score import Score
 
 class GameWindow:   #[Logan] & [Jenna]
     def __init__(self): #[Logan] & [Jenna]
@@ -15,7 +16,7 @@ class GameWindow:   #[Logan] & [Jenna]
         self.__margin = 25
 
         self.__window = turtle.Screen()
-        self.__window.setup(self.__width, self.__height)
+        self.__window.setup(self.__width, self.__height + 100)
 
         self.__leftBorder = (-self.__width / 2) + self.__margin
         self.__rightBorder = (self.__width / 2) - self.__margin
@@ -33,6 +34,8 @@ class GameWindow:   #[Logan] & [Jenna]
         self.__player2 = Paddle(self.__width / 2.5, self.__height)
         self.__player1.show()
         self.__player2.show()
+        self.__p1Score = Score(-300, self.__height / 2, "Player 1")
+        self.__p2Score = Score(200, self.__height / 2, "Player 2")
 
         self.__square = Square()
         self.__square.show()
@@ -67,11 +70,15 @@ class GameWindow:   #[Logan] & [Jenna]
         gameover = False
         time = 40   #in milliseconds
 
-        gameover = self.__square.move(self.__topBorder, self.__bottomBorder,
+        gameover, winner = self.__square.move(self.__topBorder, self.__bottomBorder,
                                         self.__leftBorder, self.__rightBorder,
                                         self.__player1, self.__player2)
 
         if gameover:
+            if winner == 1:
+                self.__p1Score.add()
+            elif winner == 2:
+                self.__p2Score.add()
             self.__player1.reset()
             self.__player2.reset()
 
