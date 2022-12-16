@@ -1,7 +1,3 @@
-'''
-Logan created KeyEvent class.
-'''
-
 import turtle
 
 from paddle import Paddle
@@ -11,6 +7,7 @@ from score import Score
 
 class GameWindow:   #[Logan] & [Jenna]
     def __init__(self): #[Logan] & [Jenna]
+        '''initializes screen attributes'''
         self.__width = 700
         self.__height = 550
         self.__margin = 25
@@ -43,6 +40,7 @@ class GameWindow:   #[Logan] & [Jenna]
         self.__square.show()
 
     def drawCourt(self):    #[Logan] & [Jenna]
+        '''creates an outline of the pong court'''
         self.__court = turtle.Turtle(visible=False)
         self.__court.speed(0)
         self.__court.pensize(3)
@@ -69,6 +67,7 @@ class GameWindow:   #[Logan] & [Jenna]
                             self.__bottomBorder)
 
     def move(self): #[Logan]
+        '''moves square object and listens for arrow and 'w' and 's' movements'''
         gameover = False
         time = 40   #in milliseconds
 
@@ -113,10 +112,12 @@ class GameWindow:   #[Logan] & [Jenna]
 
         self.__window.ontimer(self.move, time)
 
-    def quit(self):
+    def quit(self): #[Jenna]
+        '''closes screen'''
         turtle.bye()
 
     def mainloop(self): #[Logan] & [Jenna]
+        '''calls main loop functions and listens for keyboard presses'''
         self.move()
         self.__window.listen()
         self.__window.mainloop()

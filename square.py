@@ -1,7 +1,8 @@
 from turtle import Turtle
 
-class Square(Turtle):   #[Jenna]
-    def __init__(self):
+class Square(Turtle):   #[Jenna] & [Logan]
+    def __init__(self): #[Jenna] & [Logan]
+        '''initialize attributes of moving square'''
         super().__init__(visible = False)
         self.speed(0)
         self.shape("square")
@@ -16,7 +17,12 @@ class Square(Turtle):   #[Jenna]
         self.dy = 0
         self.__distance = 10
 
-    def move(self, top, bottom, left, right, leftPaddle, rightPaddle):
+    def move(self, top, bottom, left, right, leftPaddle, rightPaddle):  #[Jenna] & [Logan]
+        '''
+        defines squares movements depending on what the square collides with
+        returns True and 0 if game is over
+        returns False if game is not over and 1 if player 1 wins or 2 if player 2 wins
+        '''
         gameover = False
 
             #collision with top boundary
@@ -63,75 +69,6 @@ class Square(Turtle):   #[Jenna]
                     self.dy = -10
                 return gameover, 0
 
-            #collision with top of right paddle
-        if self.ycor() > rightPaddle.ycor() and\
-                self.ycor() - self.__halfHeight <  rightPaddle.ycor() + rightPaddle.halfHeight and\
-                (self.xcor() + self.__halfHeight > rightPaddle.xcor() - 10 and\
-                self.xcor() - self.__halfHeight < rightPaddle.xcor() + 10):
-            self.color(rightPaddle.color()[0])
-
-            self.sety(rightPaddle.ycor() + rightPaddle.halfHeight)
-            self.dy *= -1
-            gameover = True
-
-            if self.xcor() + self.__halfHeight <= rightPaddle.xcor():
-                self.dx *= -1
-                gameover = False
-
-            return gameover, 0
-
-            #collision with bottom of right paddle
-        if self.ycor() < rightPaddle.ycor() and\
-                self.ycor() + self.__halfHeight >  rightPaddle.ycor() - rightPaddle.halfHeight and\
-                (self.xcor() + self.__halfHeight > rightPaddle.xcor() - 10 and\
-                self.xcor() - self.__halfHeight < rightPaddle.xcor() + 10):
-            self.color(rightPaddle.color()[0])
-
-            self.sety(rightPaddle.ycor() - rightPaddle.halfHeight)
-            self.dy *= -1
-            gameover = True
-
-            if self.xcor() + self.__halfHeight <= rightPaddle.xcor():
-                self.dx *= -1
-                gameover = False
-
-            return gameover, 0
-
-            #collision with top of left paddle
-        if self.ycor() - self.__halfHeight > leftPaddle.ycor() + leftPaddle.halfHeight and\
-                self.ycor() - self.__halfHeight < leftPaddle.ycor() + leftPaddle.halfHeight and\
-                (self.xcor() + self.__halfHeight > leftPaddle.xcor() - 10 and\
-                self.xcor() - self.__halfHeight < leftPaddle.xcor() + 10):
-
-            self.color(leftPaddle.color()[0])
-            self.sety(leftPaddle.ycor() + leftPaddle.halfHeight)
-            self.dy *= -1
-            gameover = True
-
-            if self.xcor() - self.__halfHeight >= leftPaddle.xcor():
-                self.dx *= -1
-                gameover = False
-
-            return gameover, 0
-
-            #collision with bottom of left paddle
-        if self.ycor() < leftPaddle.ycor() and\
-                self.ycor() + self.__halfHeight > leftPaddle.ycor() - leftPaddle.halfHeight and\
-                (self.xcor() + self.__halfHeight > leftPaddle.xcor() - 10 and\
-                self.xcor() - self.__halfHeight < leftPaddle.xcor() + 10):
-
-            self.color(leftPaddle.color()[0])
-
-            self.sety(leftPaddle.ycor() - leftPaddle.halfHeight)
-            self.dy *= -1
-            gameover = True
-
-            if self.xcor() + self.__halfHeight >= leftPaddle.xcor():
-                self.dx *= -1
-                gameover = False
-
-            return gameover, 0
-
             #collision with right boundary
         if self.xcor() + self.__halfHeight > right:
             self.setx(right - self.__halfHeight)
@@ -151,10 +88,12 @@ class Square(Turtle):   #[Jenna]
         self.goto(self.xcor() + self.dx, self.ycor() + self.dy)
         return gameover, 0
 
-    def show(self):
+    def show(self): #[Logan]
+        '''shows square object'''
         self.showturtle()
 
-    def reset(self):
+    def reset(self):    #[Logan] & [Jenna]
+        '''resets square object to be at the origin'''
         self.hideturtle()
         self.goto(0, 0)
         self.dy = 0
