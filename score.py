@@ -10,6 +10,9 @@ class Score(Turtle):
         self.goto(xPos, yPos)
         self.drawScore()
 
+    def getScore(self):
+        return self.__score
+
     def add(self):
         self.__score += 1
         self.drawScore()

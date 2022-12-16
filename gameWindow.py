@@ -79,8 +79,12 @@ class GameWindow:   #[Logan] & [Jenna]
                 self.__p1Score.add()
             elif winner == 2:
                 self.__p2Score.add()
+
             self.__player1.reset()
             self.__player2.reset()
+
+            if self.__p1Score.getScore() > 9 or self.__p2Score.getScore() > 9:
+                self.__window.exitonclick()
 
         if self.__escKey.pressed:
             self.quit()
