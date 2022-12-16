@@ -30,8 +30,8 @@ class GameWindow:   #[Logan] & [Jenna]
         self.__downKey = KeyEvent('Down')
         self.__escKey = KeyEvent('Escape')
 
-        self.__p1Color = "blue"
-        self.__p2Color = "red"
+        self.__p1Color = "light blue"
+        self.__p2Color = "light green"
         self.__player1 = Paddle(-self.__width / 2.5, self.__height, self.__p1Color)
         self.__player2 = Paddle(self.__width / 2.5, self.__height, self.__p2Color)
         self.__player1.show()

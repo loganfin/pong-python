@@ -33,12 +33,11 @@ class Square(Turtle):   #[Jenna]
 
             #collision with side of right paddle
         if self.xcor() + self.__halfHeight > rightPaddle.xcor() - 10:
-            #print(rightPaddle.color()[0])
-            self.color(rightPaddle.color()[0])
             if self.ycor() < rightPaddle.ycor() + rightPaddle.halfHeight and\
                     self.ycor() > rightPaddle.ycor() - rightPaddle.halfHeight and\
                     self.xcor() < rightPaddle.xcor() - 10:
 
+                self.color(rightPaddle.color()[0])
                 self.setx(rightPaddle.xcor() - 10 - self.__halfHeight)
                 self.dx *= -1
 
@@ -50,11 +49,11 @@ class Square(Turtle):   #[Jenna]
 
             #collision with side of left paddle
         if self.xcor() - self.__halfHeight < leftPaddle.xcor() + 10:
-            self.color(leftPaddle.color()[0])
             if self.ycor() < leftPaddle.ycor() + leftPaddle.halfHeight and\
                     self.ycor() > leftPaddle.ycor() - leftPaddle.halfHeight and\
                     self.xcor() > leftPaddle.xcor() + 10:
 
+                self.color(leftPaddle.color()[0])
                 self.setx(leftPaddle.xcor() + 10 + self.__halfHeight)
                 self.dx *= -1
 
